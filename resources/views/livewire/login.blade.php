@@ -16,6 +16,9 @@
         <div class="card-body">
             <h2 class="m-b-0 text-center">Login</h2>
             <form wire:submit.prevent="submit">
+                @error('login')
+                    <div class="alert alert-danger">{{$message}}</div>
+                @enderror
                 <div class="form-group">
                     <label class="font-weight-semibold" for="email">Email:</label>
                     <div class="input-affix">
@@ -31,6 +34,7 @@
                         <input type="password" class="form-control" placeholder="Password" wire:model="password">
                     </div>@error('password') <small class="text-danger">{{$message}}</small> @enderror
                 </div>
+                <div class="form-group"><input type="checkbox" id="remember_me"><label for="remember_me">Remember me</label></div>
                 <div class="form-group">
                     <div class="d-flex align-items-center justify-content-between">
                         <button type="submit" class="btn btn-primary">Log In</button>

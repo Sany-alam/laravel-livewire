@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Login extends Component
 {
-	public $email,$password;
+	public $email,$password,$remember_me;
 
 	public function submit()
 	{
@@ -15,8 +15,10 @@ class Login extends Component
 			'email' => 'email|required',
 			'password' => 'required',
 		]);
-		Auth::attempt(['email' => $this->email, 'password' => $this->password]);
-        return redirect(url('/'));
+		if (Auth::attempt(['email' => $this->email, 'password' => $this->password],$this->remember_me)) {
+			return redirect()->intended(url('/'));
+		}
+        
 	}
 
     public function render()
