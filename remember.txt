@@ -1,0 +1,4 @@
+***********************************remove public*-***********************************************
+
+1st : "php artisan vendor:publish --tag=livewire:config"
+2nd : edit 'config/livewire.php' and change 'asset_url' null to folder name
